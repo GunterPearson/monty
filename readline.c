@@ -16,7 +16,7 @@ int readline(FILE *fd)
 	while ((ret = getline(&line, &size, fd)) != EOF)
 	{
 
-		free(line);
+		free(ret);
 	}
 }
 
