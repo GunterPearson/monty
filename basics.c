@@ -10,18 +10,20 @@
 char **strk(char *string)
 {
 	char *copy;
-	char *tokens[2];
 	int i = 0;
-	char *token;
+	static int j = 0;
+	char *token, **tokens;
 
 	strcpy(copy, string);
 	token = strtok(copy, " ");
+	tokens = malloc(2 * sizeof(char *));
 	while (token != NULL && i < 2)
 	{
-		tokens[i] = malloc(strlen(token) * sizeof(char));
-		tokens[i] = token;
+		tokens[j] = malloc(sizeof(char) * strlen(token));
+		tokens[j] = token;
 		token = strtok(NULL, " ");
 		i++;
+		j++;
 	}
-	return(tokens);
+	return (tokens);
 }

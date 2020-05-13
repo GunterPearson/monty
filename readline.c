@@ -1,4 +1,4 @@
-#include <monty.h>
+#include "monty.h"
 
 /**
  * readline - Read a file line by line
@@ -8,38 +8,32 @@
 
 int readline(FILE *fd)
 {
+	int num = 0, i = 0;
+	stack_t *stack = NULL;
 	ssize_t rd;
 	size_t size = 0;
-	stack_t *lines;
-	char *line;
+	char *line, **tokens;
+	unsigned int line_num = 0;
 
-	while ((ret = getline(&line, &size, fd)) != EOF)
+	while ((rd = getline(&line, &size, fd)) != EOF)
 	{
+		line_num++;
+		tokens = strk(line);
 
-		free(ret);
+		while (tokens[i])
+		{
+			printf("tokens[%d] is: %s\n", i, tokens[i]);
+			i++;
+		}
+		if (tokens == NULL)
+		{
+			write(2, "L", 1);
+			write(2, line_num, 4);
+			write(2, ": unknown instruction NULL", 22);
+			return (EXIT_FAILURE);
+		}
+		num = check_opcode(stack, line_num);
 	}
-}
-
-/**
- * add_node_stack - Adding a node to struct
- * @head: Head of the list
- * @line: Line to add
- * Return: Return the head with new node
- */
-
-stack_t *add_node_stack(stack_t **head, char *line)
-{
-	stack_t *newnode;
-	stack_t *headsave = *head;
-
-	newnode = malloc(sizeof(char) * strlen(line));
-	if (newnode == NULL)
-	{
-		write(2, "Error: malloc failed\n", 21);
-		exit(EXIT_FAILURE);
-	}
-	if (*head == NULL)
-	{
-
-	}
+	free(tokens);
+	return (0);
 }

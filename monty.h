@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+extern char **tokens;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,7 +37,10 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
-
+char **strk(char *string);
+int check_opcode(stack_t *stack, unsigned int line_num);
+int readline(FILE *fd);
+void push_node(stack_t **head, unsigned int line_num);
+void print_node(stack_t **head, unsigned int line_num);
 
 #endif /*_MONTY_*/
