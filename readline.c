@@ -21,18 +21,21 @@ int readline(FILE *fd)
 			break;
 		line_num++;
 		tokens = strk(line);
-		function = check_opcode(tokens[0]);
-		if (function == NULL)
+		if (tokens != NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, tokens[0]);
+			function = check_opcode(tokens[0]);
+			if (function == NULL)
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_num, tokens[0]);
+				free_tokens();
+				free(line);
+				free_stack(&stack);
+				fclose(fd);
+				exit(EXIT_FAILURE);
+			}
+			function(&stack, line_num);
 			free_tokens();
-			free(line);
-			free_stack(&stack);
-			fclose(fd);
-			exit(EXIT_FAILURE);
 		}
-		function(&stack, line_num);
-		free_tokens();
 	}
 	free(line);
 	free_stack(&stack);
