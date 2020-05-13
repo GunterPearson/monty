@@ -1,13 +1,18 @@
 #include "monty.h"
 
-void free_tokens(char **new, int i)
+char **tokens;
+
+void free_tokens()
 {
+	int i = 1;
+
+	printf("Entered free");
    while (i >= 0)
 	{
 		i--;
-		free(new[i]);
+		free(tokens[i]);
 	}
-	free(new);
+	free(tokens);
 }
 
 void free_line(char *line)

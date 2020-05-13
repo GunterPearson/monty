@@ -7,10 +7,9 @@ void (*check_opcode(char *opcode))(stack_t**, unsigned int)
 
 	instruction_t command[] = {
 		{"push", push_node},
-		{"pall", print_node},
+		{"pall\n", print_node},
 		{NULL, NULL}
 	};
-
 	while (command[i].opcode)
 	{	
 		if (strcmp(temp, command[i].opcode) == 0)

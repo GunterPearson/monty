@@ -58,7 +58,7 @@ void push_node(stack_t **head, unsigned int line_num);
 void print_node(stack_t **head, unsigned int line_num);
 
 /* IN FREES.C  */
-void free_tokens(char **new, int i);
+void free_tokens();
 void free_line(char *line);
 
 #endif
