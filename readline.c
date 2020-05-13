@@ -6,21 +6,22 @@
  * Return: 0 on sucess
  */
 
+char **tokens;
+
 int readline(FILE *fd)
 {
 	int num = 0, i = 0;
 	stack_t *stack = NULL;
 	ssize_t rd;
 	size_t size = 0;
-	char *line, **tokens;
+	char *line;
 	unsigned int line_num = 0;
 	void (*function)(stack_t**, unsigned int);
 
 	while ((rd = getline(&line, &size, fd)) != EOF)
 	{
 		line_num++;
-		if (tokens == NULL)
-		  tokens = strk(line);
+		tokens = strk(line);
 		i = 0;
 		if (tokens == NULL)
 		{
@@ -35,8 +36,6 @@ int readline(FILE *fd)
 			printf("fail\n");
 			break;
 		  }
-		printf("tokens[0] is: %s\n", tokens[0]);
-		printf("tokens[1] is: %s\n", tokens[1]);
 		function(&stack, line_num);
 	}
 	return (0);

@@ -7,14 +7,12 @@
  * Return: Return the head with new node
  */
 
+char **tokens;
+
 void push_node(stack_t **head, unsigned int line_num)
 {
-  char **tokens;
   stack_t *newnode;
   stack_t *headsave = *head;
-  printf("in Push_node\n");
-  printf("tokens[0] is: %s\n", tokens[0]);
-  printf("tokens[1] is: %s\n", tokens[1]);
   newnode = malloc(sizeof(stack_t));
   if (newnode == NULL)
     {
@@ -22,7 +20,6 @@ void push_node(stack_t **head, unsigned int line_num)
       exit(EXIT_FAILURE);
     }
   newnode->n = strtonum(tokens[1]);
-  printf("newnode->n is: %d\n", newnode->n);
   if (*head == NULL)
     {
       newnode->next = NULL;
@@ -45,8 +42,7 @@ void print_node(stack_t **head, unsigned int line_num)
 {
   stack_t *temp = *head;
 
-  printf("in print_node\n");
-  while (temp && temp->next)
+  while (temp != NULL)
     {
       printf("%d\n", temp->n);
       temp = temp->next;
