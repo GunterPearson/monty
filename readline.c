@@ -19,14 +19,10 @@ int readline(FILE *fd)
 	while ((rd = getline(&line, &size, fd)) != EOF)
 	{
 		line_num++;
-		tokens = strk(line);
+		if (tokens == NULL)
+		  tokens = strk(line);
 		i = 0;
-		while (tokens[i])
-		{
-			printf("tokens[%d] is: %s\n", i, tokens[i]);
-			i++;
-		}
-		/*if (tokens == NULL)
+		if (tokens == NULL)
 		{
 			write(2, "L", 1);
 			write(2, line_num, 4);
@@ -34,10 +30,14 @@ int readline(FILE *fd)
 			return (EXIT_FAILURE);
 		}
 		function = check_opcode(tokens[0]);
-		if (function != NULL);
-			printf("success\n");
-		if (line != NULL)
-			free_line(line);*/
+		if (function == NULL)
+		  {
+			printf("fail\n");
+			break;
+		  }
+		printf("tokens[0] is: %s\n", tokens[0]);
+		printf("tokens[1] is: %s\n", tokens[1]);
+		function(&stack, line_num);
 	}
 	return (0);
 }

@@ -44,6 +44,9 @@ int string_len(char *string);
 int check_space(char c);
 char *next_word(char *string);
 
+/* IN bASICS_2.C */
+int strtonum(char *token);
+
 /* IN CHECK_OPCODE.C */
 void (*check_opcode(char *opcode))(stack_t**, unsigned int);
 
