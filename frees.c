@@ -1,10 +1,15 @@
 #include "monty.h"
 
-void free_tokens()
+/**
+ * free_tokens - free all malloced tokens
+ *
+ * Return: void
+ */
+void free_tokens(void)
 {
 	int i = 1;
 
-   while (i >= 0)
+	while (i >= 0)
 	{
 		free(tokens[i]);
 		i--;
@@ -12,7 +17,12 @@ void free_tokens()
 	free(tokens);
 }
 
-
+/**
+ * free_stack - free linked list
+ * @stack: linked list
+ *
+ * Return: void
+ */
 void free_stack(stack_t **stack)
 {
 	stack_t *last = *stack;
