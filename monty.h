@@ -46,9 +46,11 @@ char *next_word(char *string);
 
 /* IN bASICS_2.C */
 int strtonum(char *token);
+int check_line(char *line);
 
 /* IN CHECK_OPCODE.C */
 void (*check_opcode(char *opcode))(stack_t**, unsigned int);
+char *clean_opcode(char *temp);
 
 /* IN READLINE.C */
 int readline(FILE *fd);

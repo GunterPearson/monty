@@ -19,3 +19,32 @@ int i = 0;
 	i = atoi(token);
 	return (i);
 }
+
+/**
+ * check_line - checks for empty line
+ * @line: string given
+ *
+ * Return: int
+ */
+int check_line(char *line)
+{
+	int i = 0, j = 0;
+	char check[] = " \n\t\b\a";
+
+	while (line[i])
+	{
+		j = 0;
+		while (check[j])
+		{
+			if (line[i] == check[j])
+			{
+				break;
+			}
+			j++;
+		}
+		if (check[j] == '\0')
+			return (0);
+		i++;
+	}
+	return (1);
+}

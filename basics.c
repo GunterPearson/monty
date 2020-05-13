@@ -14,7 +14,8 @@ char **strk(char *string)
 
 	if (string == NULL)
 		return (NULL);
-
+	if (check_line(string))
+		return (NULL);
 	string_num = string_count(string);
 	if (string_num == 0)
 		return (NULL);
