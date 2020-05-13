@@ -9,25 +9,26 @@
 
 void push_node(stack_t **head, unsigned int line_num)
 {
-  stack_t *newnode;
-  stack_t *headsave = *head;
-  newnode = malloc(sizeof(stack_t));
-  if (newnode == NULL)
-    {
-      write(2, "Error: malloc failed\n", 21);
-      exit(EXIT_FAILURE);
-    }
-  newnode->n = strtonum(tokens[1]);
-  if (*head == NULL)
-    {
-      newnode->next = NULL;
-      newnode->prev = NULL;
-      *head = newnode;
-      return;
-    }
-  newnode->prev = NULL;
-  newnode->next = *head;
-  *head = newnode;
+	stack_t *newnode;
+	stack_t *headsave = *head;
+
+	newnode = malloc(sizeof(stack_t));
+	if (newnode == NULL)
+	{
+		write(2, "Error: malloc failed\n", 21);
+		exit(EXIT_FAILURE);
+	}
+	newnode->n = strtonum(tokens[1]);
+	if (*head == NULL)
+	{
+		newnode->next = NULL;
+		newnode->prev = NULL;
+		*head = newnode;
+		return;
+	}
+	newnode->prev = NULL;
+	newnode->next = *head;
+	*head = newnode;
 }
 
 /**
@@ -38,11 +39,11 @@ void push_node(stack_t **head, unsigned int line_num)
  */
 void print_node(stack_t **head, unsigned int line_num)
 {
-  stack_t *temp = *head;
+	stack_t *temp = *head;
 
-  while (temp != NULL)
-    {
-      printf("%d\n", temp->n);
-      temp = temp->next;
-    }
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
 }

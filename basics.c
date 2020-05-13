@@ -47,6 +47,12 @@ char **strk(char *string)
 	new[i] = NULL;
 	return (new);
 }
+/**
+ * string_count - counts the words in a string
+ * @string: string to be parsed and counted
+ *
+ * Return: int
+ */
 
 int string_count(char *string)
 {
@@ -65,6 +71,12 @@ int string_count(char *string)
 	}
 	return (count);
 }
+/**
+ * string_len - returns len of word
+ * @string: contains word
+ *
+ * Return: int
+ */
 
 int string_len(char *string)
 {
@@ -84,6 +96,12 @@ int string_len(char *string)
 	}
 	return (len);
 }
+/**
+ * check_space - checks string for space
+ * @c: char from string to be checked
+ *
+ * Return: int
+ */
 
 int check_space(char c)
 {
@@ -93,6 +111,12 @@ int check_space(char c)
 		return (1);
 	return (0);
 }
+/**
+ * next_word - returns string at next character that isnt a space
+ * @string: string given
+ *
+ * Return: string at next char
+ */
 
 char *next_word(char *string)
 {

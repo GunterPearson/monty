@@ -1,13 +1,13 @@
 #include "monty.h"
 
+char **tokens = NULL;
+
 /**
  * main - Opens monty files and executes
  * @argc: Number of arguments
  * @argv: Arguments
  * Return: 0 for success, multiple exit statuses
  */
-
-char **tokens = NULL;
 
 int main(int argc, char *argv[])
 {
