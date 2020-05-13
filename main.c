@@ -7,9 +7,12 @@
  * Return: 0 for success, multiple exit statuses
  */
 
+char **tokens = NULL;
+
 int main(int argc, char *argv[])
 {
 	FILE *fd = NULL;
+	stack_t **stack;
 
 	if (argc != 2)
 	{

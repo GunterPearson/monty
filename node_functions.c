@@ -7,8 +7,6 @@
  * Return: Return the head with new node
  */
 
-char **tokens;
-
 void push_node(stack_t **head, unsigned int line_num)
 {
   stack_t *newnode;
