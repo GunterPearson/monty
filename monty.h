@@ -60,5 +60,7 @@ void print_node(stack_t **head, unsigned int line_num);
 /* IN FREES.C  */
 void free_tokens();
 void free_line(char *line);
+void free_stack(stack_t **stack);
+
 
 #endif

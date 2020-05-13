@@ -1,21 +1,27 @@
 #include "monty.h"
 
-char **tokens;
-
 void free_tokens()
 {
 	int i = 1;
 
-	printf("Entered free");
    while (i >= 0)
 	{
-		i--;
 		free(tokens[i]);
+		i--;
 	}
 	free(tokens);
 }
 
-void free_line(char *line)
+
+void free_stack(stack_t **stack)
 {
-    free(line);
+	stack_t *last = *stack;
+
+	while (*stack != NULL)
+	{
+		*stack = (*stack)->next;
+		free(last);
+		last = *stack;
+	}
+	free(*stack);
 }
