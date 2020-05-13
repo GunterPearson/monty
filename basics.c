@@ -9,21 +9,102 @@
 
 char **strk(char *string)
 {
-	char *copy;
-	int i = 0;
-	static int j = 0;
-	char *token, **tokens;
+	char **new;
+	int len, string_num, j = 0, i = 0;
 
-	strcpy(copy, string);
-	token = strtok(copy, " ");
-	tokens = malloc(2 * sizeof(char *));
-	while (token != NULL && i < 2)
+	if (string == NULL)
+		return (NULL);
+
+	string_num = string_count(string);
+	if (string_num == 0)
+		return (NULL);
+	new = malloc((string_num + 1) * sizeof(char *));
+	if (new == NULL)
+		return (NULL);
+	while (i < string_num)
 	{
-		tokens[j] = malloc(sizeof(char) * strlen(token));
-		tokens[j] = token;
-		token = strtok(NULL, " ");
+		len = string_len(string);
+		if (check_space(string[0]))
+		{
+			string = next_word(string);
+		}
+		new[i] = malloc((len + 1) * sizeof(char));
+		if (new[i] == NULL)
+		{
+			free_tokens(new, i);
+			return (NULL);
+		}
+		j = 0;
+		while (j < len)
+		{
+			new[i][j] = string[j];
+			j++;
+		}
+		new[i][j] = '\0';
+		string = next_word(string);
 		i++;
-		j++;
 	}
-	return (tokens);
+	new[i] = NULL;
+	return (new);
+}
+
+int string_count(char *string)
+{
+	int i = 0, j = 1, count = 0;
+
+	while (string[i])
+	{
+		if (check_space(string[i]))
+			j = 1;
+		else if (j)
+		{
+			j = 0;
+			count++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+int string_len(char *string)
+{
+	int i = 0, j = 1, len = 0;
+
+	while (string[i])
+	{
+		if (check_space(string[i]))
+			j = 1;
+		else if (j != 0)
+		{
+			len++;
+		}
+		if (len > 0 && check_space(string[i]))
+			break;
+		i++;
+	}
+	return (len);
+}
+
+int check_space(char c)
+{
+	char space = ' ';
+
+	if (c == space)
+		return (1);
+	return (0);
+}
+
+char *next_word(char *string)
+{
+	int i = 0, j = 0;
+
+	while (string[i])
+	{
+		if (check_space(string[i]))
+			j = 1;
+		else if (j != 0)
+			break;
+		i++;
+	}
+	return (string + i);
 }

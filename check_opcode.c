@@ -1,10 +1,9 @@
 #include "monty.h"
 
-int check_opcode(stack_t *stack, unsigned int line_num)
+void (*check_opcode(char *opcode))(stack_t**, unsigned int)
 {
 	int i = 0;
-	char **tokens;
-	char *temp = tokens[0];
+	char *temp = opcode;
 
 	instruction_t command[] = {
 		{"push", push_node},
@@ -15,9 +14,8 @@ int check_opcode(stack_t *stack, unsigned int line_num)
 	while (command[i].opcode)
 	{	
 		if (strcmp(temp, command[i].opcode) == 0)
-			command[i].f(&stack, line_num);
+			return (command[i].f);
 		i++;
 	}
-
-	return (0);
+	return (NULL);
 }
