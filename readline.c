@@ -8,7 +8,6 @@
 
 int readline(FILE *fd)
 {
-	int num = 0, i = 0;
 	stack_t *stack = NULL;
 	ssize_t rd;
 	size_t size = 0;
@@ -22,7 +21,6 @@ int readline(FILE *fd)
 			break;
 		line_num++;
 		tokens = strk(line);
-		i = 0;
 		function = check_opcode(tokens[0]);
 		if (function == NULL)
 		{

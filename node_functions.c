@@ -10,12 +10,12 @@
 void push_node(stack_t **head, unsigned int line_num)
 {
 	stack_t *newnode;
-	stack_t *headsave = *head;
+	(void)line_num;
 
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
-		write(2, "Error: malloc failed\n", 21);
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	newnode->n = strtonum(tokens[1]);
@@ -40,6 +40,7 @@ void push_node(stack_t **head, unsigned int line_num)
 void print_node(stack_t **head, unsigned int line_num)
 {
 	stack_t *temp = *head;
+	(void)line_num;
 
 	while (temp != NULL)
 	{

@@ -31,7 +31,7 @@ char **strk(char *string)
 		new[i] = malloc((len + 1) * sizeof(char));
 		if (new[i] == NULL)
 		{
-			free_tokens(new, i);
+			free_tokens();
 			return (NULL);
 		}
 		j = 0;
