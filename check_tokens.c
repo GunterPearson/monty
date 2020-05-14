@@ -56,9 +56,35 @@ int is_int(void)
 
 	while (temp[i] != '\0')
 	{
-		if (!(isdigit(temp[i])))
+		if (!(isdigit(temp[i])) && temp[i] != '-')
 			return (1);
 		i++;
+	}
+	return (0);
+}
+
+/**
+* head_null - Checks if the stack is empty
+* @fd: File
+* @line: Line
+* @stack: Stack
+* @line_number: The line number
+* Return: 0 for good
+*/
+
+int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
+{
+	char *pint = "pint";
+
+	if (strcmp(tokens[0], pint) != 0)
+		return(0);
+	if (stack == NULL)
+	{
+		free_tokens();
+		free(line);
+		fclose(fd);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
