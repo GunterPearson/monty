@@ -18,7 +18,7 @@ void push_node(stack_t **head, unsigned int line_num)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	newnode->n = strtonum(tokens[1]);
+	newnode->n = strtonum(tokens[1], line_num);
 	if (*head == NULL)
 	{
 		newnode->next = NULL;

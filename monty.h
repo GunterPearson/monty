@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 extern char **tokens;
 
@@ -45,12 +46,16 @@ int check_space(char c);
 char *next_word(char *string);
 
 /* IN bASICS_2.C */
-int strtonum(char *token);
+int strtonum(char *token, unsigned int line_num);
 int check_line(char *line);
 
 /* IN CHECK_OPCODE.C */
 void (*check_opcode(char *opcode))(stack_t**, unsigned int);
 char *clean_opcode(char *temp);
+
+/* IN CHECK_TOKENS.C */
+int check_tokens(FILE *fd, stack_t *stack, char *line, unsigned int line_num);
+int is_int(char *token);
 
 /* IN READLINE.C */
 int readline(FILE *fd);
