@@ -36,6 +36,7 @@ int readline(FILE *fd)
 			check_tokens(fd, stack, line, line_num);
 			head_null(fd, line, stack, line_num);
 			head_null_2(fd, line, stack, line_num);
+			head_null_3(fd, line, stack, line_num);
 			function(&stack, line_num);
 			free_tokens();
 		}
