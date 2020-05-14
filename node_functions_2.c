@@ -45,3 +45,28 @@ void add_top(stack_t **head, unsigned int line_number)
 	*head = new;
 	free(temp);
 }
+
+/**
+ * sub_top - swaps top 2 nodes
+ * @head: head of linked list
+ * @line_number: line number we are on
+ *
+ * Return: void
+ */
+void sub_top(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp;
+	stack_t *new;
+	int i = 0;
+	(void)line_number;
+
+	temp = *head;
+	i = temp->n;
+	new = temp->next;
+	i -= new->n;
+	i *= -1;
+	new->prev = NULL;
+	new->n = i;
+	*head = new;
+	free(temp);
+}

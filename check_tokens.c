@@ -115,8 +115,9 @@ int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 {
 	char *add = "add";
+	char *sub = "sub";
 
-	if (strcmp(tokens[0], add) != 0)
+	if (strcmp(tokens[0], add) != 0 && strcmp(tokens[0], sub) != 0)
 		return (0);
 	if ((stack == NULL || stack->next == NULL) && strcmp(tokens[0], add) == 0)
 	{
@@ -124,6 +125,14 @@ int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 		if (stack != NULL)
 			free(stack);
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((stack == NULL || stack->next == NULL) && strcmp(tokens[0], sub) == 0)
+	{
+		free_tokens(), free(line), fclose(fd);
+		if (stack != NULL)
+			free(stack);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	return (0);
