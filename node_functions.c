@@ -95,5 +95,5 @@ void pop_stack(stack_t **head, unsigned int line_number)
 void nop_nothing(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	(void)*stack;
+	(void)stack;
 }
