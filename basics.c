@@ -22,8 +22,7 @@ char **strk(char *string)
 	new = malloc((string_num + 1) * sizeof(char *));
 	if (new == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
 	}
 	while (i < string_num)
 	{
@@ -36,8 +35,7 @@ char **strk(char *string)
 		if (new[i] == NULL)
 		{
 			free_tokens();
-			fprintf(stderr, "Error: malloc failed\n");
-			exit(EXIT_FAILURE);
+			fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
 		}
 		j = 0;
 		while (j < len)
