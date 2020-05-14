@@ -11,37 +11,37 @@
 
 int check_tokens(FILE *fd, stack_t *stack, char *line, unsigned int line_num)
 {
-    int i = 0;
-    char *temp = tokens[1];
-    char *push = "push";
+	int i = 0;
+	char *temp = tokens[1];
+	char *push = "push";
 
-    if (strcmp(tokens[0], push))
-        return (0);
-    while (temp[i] != '\0')
-    {
-        if (temp[i] == '\n')
-            temp[i] = '\0';
-        i++;
-    }
-    if (temp[0] == '\0')
-    {
-        free_stack(&stack);
-        free_tokens();
-        free(line);
-        fclose(fd);
-        fprintf(stderr, "L%u: usage: push integer\n", line_num);
-        exit(EXIT_FAILURE);
-    }
-    if (is_int() == 1)
-    {
-        free_stack(&stack);
-        free_tokens();
-        free(line);
-        fclose(fd);
-        fprintf(stderr, "L%u: usage: push integer\n", line_num);
-        exit(EXIT_FAILURE);
-    }
-    return (0);
+	if (strcmp(tokens[0], push))
+		return (0);
+	while (temp[i] != '\0')
+	{
+		if (temp[i] == '\n')
+			temp[i] = '\0';
+		i++;
+	}
+	if (temp[0] == '\0')
+	{
+		free_stack(&stack);
+		free_tokens();
+		free(line);
+		fclose(fd);
+		fprintf(stderr, "L%u: usage: push integer\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	if (is_int() == 1)
+	{
+		free_stack(&stack);
+		free_tokens();
+		free(line);
+		fclose(fd);
+		fprintf(stderr, "L%u: usage: push integer\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	return (0);
 }
 
 /**
@@ -49,16 +49,16 @@ int check_tokens(FILE *fd, stack_t *stack, char *line, unsigned int line_num)
 * Return: 1 for no, 0 for yes
 */
 
-int is_int()
+int is_int(void)
 {
-    int i = 0;
-    char *temp = tokens[1];
+	int i = 0;
+	char *temp = tokens[1];
 
-    while (temp[i] != '\0')
-    {
-        if (!(isdigit(temp[i])))
-            return (1);
-        i++;
-    }
-    return (0);
+	while (temp[i] != '\0')
+	{
+		if (!(isdigit(temp[i])))
+			return (1);
+		i++;
+	}
+	return (0);
 }
