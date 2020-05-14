@@ -84,3 +84,16 @@ void pop_stack(stack_t **head, unsigned int line_number)
 		(*head)->prev = NULL;
 	free(temp);
 }
+
+/**
+* nop_nothing - Does Nothing!
+* @stack: The stack
+* @line_number: Line number
+* Return: Void
+*/
+
+void nop_nothing(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	(void)*stack;
+}
