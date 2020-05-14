@@ -57,6 +57,7 @@ char *clean_opcode(char *temp);
 int check_tokens(FILE *fd, stack_t *stack, char *line, unsigned int line_num);
 int is_int(void);
 int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
+int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
 
 /* IN READLINE.C */
 int readline(FILE *fd);
@@ -70,6 +71,7 @@ void nop_nothing(stack_t **stack, unsigned int line_number);
 
 /* IN NODE_FUNCTION_2.C */
 void swap_top(stack_t **head, unsigned int line_number);
+void add_top(stack_t **head, unsigned int line_number);
 
 /* IN FREES.C  */
 void free_tokens(void);
