@@ -1,14 +1,25 @@
 #include "monty.h"
 
 /**
- * hash_nothing - swaps top 2 nodes
+ * mod_top - swaps top 2 nodes
  * @head: head of linked list
  * @line_number: line number we are on
  *
  * Return: void
  */
-void hash_nothing(stack_t **head, unsigned int line_number)
+void mod_top(stack_t **head, unsigned int line_number)
 {
-	(void)head;
+	stack_t *temp;
+	stack_t *new;
+	int i = 0;
 	(void)line_number;
+
+	temp = *head;
+	i = temp->next->n;
+	new = temp->next;
+	i = i % temp->n;
+	new->prev = NULL;
+	new->n = i;
+	*head = new;
+	free(temp);
 }
