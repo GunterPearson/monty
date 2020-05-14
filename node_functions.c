@@ -63,3 +63,24 @@ void print_first(stack_t **head, unsigned int line_number)
 	(void)line_number;
 	printf("%d\n", (*head)->n);
 }
+
+/**
+* pop_stack - Pops the top of the stack
+* @head: Head of the stack
+* @line_number: The line number
+* Return: Void
+*/
+
+void pop_stack(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp;
+
+	(void)line_number;
+	temp = *head;
+	*head = (*head)->next;
+	if (*head == NULL)
+		free(*head);
+	else
+		(*head)->prev = NULL;
+	free(temp);
+}
