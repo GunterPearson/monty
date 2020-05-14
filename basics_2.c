@@ -31,6 +31,8 @@ int check_line(char *line)
 	int i = 0, j = 0;
 	char check[] = " \n\t\b\a";
 
+	if (line[0] == '#')
+		return (1);
 	while (line[i])
 	{
 		j = 0;
