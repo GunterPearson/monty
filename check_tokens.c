@@ -77,7 +77,7 @@ int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 	char *pint = "pint";
 
 	if (strcmp(tokens[0], pint) != 0)
-		return(0);
+		return (0);
 	if (stack == NULL)
 	{
 		free_tokens();

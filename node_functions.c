@@ -60,6 +60,6 @@ void print_node(stack_t **head, unsigned int line_num)
 
 void print_first(stack_t **head, unsigned int line_number)
 {
-    (void)line_number;
-    printf("%d\n", (*head)->n);
+	(void)line_number;
+	printf("%d\n", (*head)->n);
 }
