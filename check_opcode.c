@@ -17,6 +17,7 @@ void (*check_opcode(char *opcode))(stack_t**, unsigned int)
 		{"pint", print_first},
 		{"pop", pop_stack},
 		{"nop", nop_nothing},
+		{"swap", swap_top},
 		{NULL, NULL}
 	};
 	temp = clean_opcode(temp);

@@ -76,23 +76,27 @@ int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 {
 	char *pint = "pint";
 	char *popit = "pop";
+	char *swap = "swap";
 
-	if (strcmp(tokens[0], pint) != 0 && strcmp(tokens[0], popit) != 0)
+	if (strcmp(tokens[0], pint) != 0 && strcmp(tokens[0],
+		popit) != 0 && strcmp(tokens[0], swap) != 0)
 		return (0);
 	if (stack == NULL && strcmp(tokens[0], pint) == 0)
 	{
-		free_tokens();
-		free(line);
-		fclose(fd);
+		free_tokens(), free(line), fclose(fd);
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if (stack == NULL && strcmp(tokens[0], popit) == 0)
 	{
-		free_tokens();
-		free(line);
-		fclose(fd);
+		free_tokens(), free(line), fclose(fd);
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((stack == NULL || stack->next == NULL) && strcmp(tokens[0], swap) == 0)
+	{
+		free_tokens(), free(line), fclose(fd);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	return (0);
