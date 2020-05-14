@@ -14,6 +14,7 @@ void (*check_opcode(char *opcode))(stack_t**, unsigned int)
 	instruction_t command[] = {
 		{"push", push_node},
 		{"pall", print_node},
+        {"pint", print_first},
 		{NULL, NULL}
 	};
 	temp = clean_opcode(temp);
