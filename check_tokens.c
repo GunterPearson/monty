@@ -116,8 +116,10 @@ int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 {
 	char *add = "add";
 	char *sub = "sub";
+	char *div = "div";
 
-	if (strcmp(tokens[0], add) != 0 && strcmp(tokens[0], sub) != 0)
+	if (strcmp(tokens[0], add) != 0 && strcmp(tokens[0], sub) != 0 &&
+		strcmp(tokens[0], div) != 0)
 		return (0);
 	if ((stack == NULL || stack->next == NULL) && strcmp(tokens[0], add) == 0)
 	{
@@ -133,6 +135,21 @@ int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 		if (stack != NULL)
 			free(stack);
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((stack == NULL || stack->next == NULL || stack->n == 0)
+		&& strcmp(tokens[0], div) == 0)
+	{
+		free_tokens(), free(line), fclose(fd);
+		if (stack->n == 0 && stack->next != NULL)
+		{
+			fprintf(stderr, "L%u: division by zero\n", line_number);
+			free_stack(&stack);
+			exit(EXIT_FAILURE);
+		}
+		if (stack != NULL)
+			free(stack);
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	return (0);
