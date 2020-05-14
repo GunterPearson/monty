@@ -73,6 +73,7 @@ void nop_nothing(stack_t **stack, unsigned int line_number);
 void swap_top(stack_t **head, unsigned int line_number);
 void add_top(stack_t **head, unsigned int line_number);
 void sub_top(stack_t **head, unsigned int line_number);
+void div_top(stack_t **head, unsigned int line_number);
 
 /* IN FREES.C  */
 void free_tokens(void);
