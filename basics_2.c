@@ -10,7 +10,8 @@
 
 int strtonum(char *token, unsigned int line_num)
 {
-int i = 0;
+	int i = 0;
+
 	while (token[i])
 	{
 		if (token[i] == '\n')
