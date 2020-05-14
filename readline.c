@@ -33,6 +33,7 @@ int readline(FILE *fd)
 				fclose(fd);
 				exit(EXIT_FAILURE);
 			}
+			check_tokens(fd, stack, line, line_num);
 			function(&stack, line_num);
 			free_tokens();
 		}

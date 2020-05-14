@@ -3,17 +3,23 @@
 /**
  * strtonum - converts string to int
  * @token: string to convert
+ * @line_num: current line number
  *
  * Return: int
  */
 
-int strtonum(char *token)
+int strtonum(char *token, unsigned int line_num)
 {
 int i = 0;
 	while (token[i])
 	{
 		if (token[i] == '\n')
 			token[i] = '\0';
+		if (token[0] == '\0')
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
 	i = atoi(token);
