@@ -94,3 +94,27 @@ void div_top(stack_t **head, unsigned int line_number)
 	*head = new;
 	free(temp);
 }
+
+/**
+ * mul_top - multiplies top 2 nodes
+ * @head: head of linked list
+ * @line_number: line number we are on
+ *
+ * Return: void
+ */
+void mul_top(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp;
+	stack_t *new;
+	int i = 0;
+	(void)line_number;
+
+	temp = *head;
+	i = temp->next->n;
+	new = temp->next;
+	i *= temp->n;
+	new->prev = NULL;
+	new->n = i;
+	*head = new;
+	free(temp);
+}

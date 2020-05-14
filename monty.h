@@ -58,6 +58,7 @@ int check_tokens(FILE *fd, stack_t *stack, char *line, unsigned int line_num);
 int is_int(void);
 int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
 int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
+int head_null_3(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
 
 /* IN READLINE.C */
 int readline(FILE *fd);
@@ -74,6 +75,7 @@ void swap_top(stack_t **head, unsigned int line_number);
 void add_top(stack_t **head, unsigned int line_number);
 void sub_top(stack_t **head, unsigned int line_number);
 void div_top(stack_t **head, unsigned int line_number);
+void mul_top(stack_t **head, unsigned int line_number);
 
 /* IN FREES.C  */
 void free_tokens(void);
