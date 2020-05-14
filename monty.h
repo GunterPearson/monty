@@ -55,7 +55,7 @@ char *clean_opcode(char *temp);
 
 /* IN CHECK_TOKENS.C */
 int check_tokens(FILE *fd, stack_t *stack, char *line, unsigned int line_num);
-int is_int(char *token);
+int is_int();
 
 /* IN READLINE.C */
 int readline(FILE *fd);
