@@ -1,0 +1,23 @@
+#include "monty.h"
+
+/**
+ * swap_top - swaps top 2 nodes
+ * @head: head of linked list
+ * @line_number: line number we are on
+ *
+ * Return: void
+ */
+void swap_top(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp;
+	stack_t *new;
+	(void)line_number;
+
+	temp = *head;
+	new = temp->next;
+	temp->prev = new;
+	temp->next = new->next;
+	new->next = temp;
+	new->prev = NULL;
+	*head = new;
+}

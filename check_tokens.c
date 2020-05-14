@@ -96,6 +96,8 @@ int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 	if ((stack == NULL || stack->next == NULL) && strcmp(tokens[0], swap) == 0)
 	{
 		free_tokens(), free(line), fclose(fd);
+		if (stack != NULL)
+			free(stack);
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
