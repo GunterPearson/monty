@@ -103,3 +103,28 @@ int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 	}
 	return (0);
 }
+/**
+* head_null_2 - Checks if the stack is empty
+* @fd: File
+* @line: Line
+* @stack: Stack
+* @line_number: The line number
+* Return: 0 for good
+*/
+
+int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
+{
+	char *add = "add";
+
+	if (strcmp(tokens[0], add) != 0)
+		return (0);
+	if ((stack == NULL || stack->next == NULL) && strcmp(tokens[0], add) == 0)
+	{
+		free_tokens(), free(line), fclose(fd);
+		if (stack != NULL)
+			free(stack);
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	return (0);
+}
