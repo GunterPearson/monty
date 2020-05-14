@@ -22,6 +22,7 @@ void (*check_opcode(char *opcode))(stack_t**, unsigned int)
 		{"sub", sub_top},
 		{"div", div_top},
 		{"mul", mul_top},
+		{"#", hash_nothing},
 		{NULL, NULL}
 	};
 	temp = clean_opcode(temp);

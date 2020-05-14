@@ -77,6 +77,9 @@ void sub_top(stack_t **head, unsigned int line_number);
 void div_top(stack_t **head, unsigned int line_number);
 void mul_top(stack_t **head, unsigned int line_number);
 
+/* IN NODE_FUNCTIONS_3.C */
+void hash_nothing(stack_t **head, unsigned int line_number);
+
 /* IN FREES.C  */
 void free_tokens(void);
 void free_stack(stack_t **stack);

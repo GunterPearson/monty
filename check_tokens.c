@@ -141,7 +141,7 @@ int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 		&& strcmp(tokens[0], div) == 0)
 	{
 		free_tokens(), free(line), fclose(fd);
-		if (stack->n == 0 && stack->next != NULL)
+		if (stack->n <= 0 && stack->next != NULL)
 		{
 			fprintf(stderr, "L%u: division by zero\n", line_number);
 			free_stack(&stack);
