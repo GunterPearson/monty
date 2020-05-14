@@ -7,12 +7,12 @@
  */
 void free_tokens(void)
 {
-	int i = 1;
+	int i = 0;
 
-	while (i >= 0)
+	while (tokens[i] != NULL)
 	{
 		free(tokens[i]);
-		i--;
+		i++;
 	}
 	free(tokens);
 }
