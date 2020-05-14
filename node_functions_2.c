@@ -86,10 +86,9 @@ void div_top(stack_t **head, unsigned int line_number)
 	(void)line_number;
 
 	temp = *head;
-	i = temp->n;
+	i = temp->next->n;
 	new = temp->next;
-	i /= new->n;
-	i *= -1;
+	i /= temp->n;
 	new->prev = NULL;
 	new->n = i;
 	*head = new;
