@@ -59,6 +59,7 @@ int is_int(void);
 int head_null(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
 int head_null_2(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
 int head_null_3(FILE *fd, char *line, stack_t *stack, unsigned int line_number);
+int head_null_4(FILE *fd, char *line, stack_t **stack, unsigned int line_num);
 
 /* IN READLINE.C */
 int readline(FILE *fd);
@@ -79,6 +80,7 @@ void mul_top(stack_t **head, unsigned int line_number);
 
 /* IN NODE_FUNCTIONS_3.C */
 void mod_top(stack_t **head, unsigned int line_number);
+void print_char(stack_t **head, unsigned int line_number);
 
 /* IN FREES.C  */
 void free_tokens(void);

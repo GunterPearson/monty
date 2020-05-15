@@ -23,3 +23,19 @@ void mod_top(stack_t **head, unsigned int line_number)
 	*head = new;
 	free(temp);
 }
+
+/**
+ * print_char - Prints a char
+ * @head: The stack
+ * @line_number: Number of lines
+ *
+ * Return: void
+ */
+
+void print_char(stack_t **head, unsigned int line_number)
+{
+	int theint = (*head)->n;
+
+	(void)line_number;
+	printf("%c\n", theint);
+}
