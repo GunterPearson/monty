@@ -183,18 +183,16 @@ int head_null_3(FILE *fd, char *line, stack_t *stack, unsigned int line_number)
 		&& strcmp(tokens[0], mod) == 0)
 	{
 		free_tokens(), free(line), fclose(fd);
-		if (stack->next == NULL)
-		{
-			free(stack);
-			fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-		if (stack->n == 0)
+		if (stack->n <= 0 && stack->next != NULL)
 		{
 			fprintf(stderr, "L%u: division by zero\n", line_number);
 			free_stack(&stack);
 			exit(EXIT_FAILURE);
 		}
+		if (stack != NULL)
+			free(stack);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
