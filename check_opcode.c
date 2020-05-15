@@ -23,6 +23,7 @@ void (*check_opcode(char *opcode))(stack_t**, unsigned int)
 		{"div", div_top},
 		{"mul", mul_top},
 		{"mod", mod_top},
+		{"pchar", print_char},
 		{NULL, NULL}
 	};
 	temp = clean_opcode(temp);
